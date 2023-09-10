@@ -1,3 +1,4 @@
+import ProductCard from '@/components/ProductCard/page';
 import { client } from '@/sanity/lib/client';
 import { urlForImage } from '@/sanity/lib/image';
 import { getCategoriesData, getCategoryData } from '@/sanity/sanity-utils'
@@ -42,7 +43,9 @@ export default async function collections({params}:{params:{category:string}}) {
         <div className=' mx-auto my-8 grid grid-cols-3 justify-center'>
         {filteredProducts.map((product:ProductsForCard) =>(
                 <div key={product._id} className=' w-72 h-128 rounded-lg shadow-lime-300 drop-shadow-xl my-4 mx-4'>
-            <Link href={`/products/${product.slug}`}>
+                    {/*@ts-ignore*/}
+                    <ProductCard product={product} />
+            {/* <Link href={`/products/${product.slug}`}>
                     <div className='w-full h-4/5 relative text-right'>
                         <Image src={urlForImage(product.images).url()} alt='Preview' fill={true} />
                         <div className='absolute right-1 top-1'>
@@ -61,10 +64,10 @@ export default async function collections({params}:{params:{category:string}}) {
                             </p>):(<p>
                                 <span className=' font-bold'>{product.price}</span>
                             </p>)}
-                        </div>
+                        </div> */}
                     {/* <Image src={product.images[0]} width={200} height={200} alt='Preview Not Available' /> */}
-                    </div>
-            </Link>
+                    {/* </div> */}
+            {/* </Link> */}
                 </div>
         ))}
         </div>
